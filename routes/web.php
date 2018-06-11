@@ -12,6 +12,13 @@
 */
 
 Route::get('/', function () {
-    $testimonials = App\Testimonial::all();
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/admin/projects','ProjectController');
+
+

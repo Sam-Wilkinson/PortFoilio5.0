@@ -54,6 +54,24 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        'ProjectImg' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/projectImg'),
+            'url' => env('APP_URL').'/storage/projectImg',
+            'visibility' => 'public',
+        ],
+        'ProjectImg-thumb' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/projectImg/thumb'),
+            'url' => env('APP_URL').'/storage/projectImg/thumb',
+            'visibility' => 'public',
+        ],
+        'ProjectImg-banner' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/projectImg/banner'),
+            'url' => env('APP_URL').'/storage/projectImg/banner',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'blue',
+    'skin' => 'green',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
 
     'login_url' => 'login',
 
-    'register_url' => 'register',
+    'register_url' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -115,8 +115,8 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
+            'text'        => 'Projects',
+            'url'         => 'admin/projects',
             'icon'        => 'file',
             'label'       => 4,
             'label_color' => 'success',

@@ -21,8 +21,8 @@ class CreateProjectsTable extends Migration
             $table->string('image')->nullable();
             $table->string('URL');
             $table->date('date');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('client_id')->references('id')->on('clients');
         });
     }

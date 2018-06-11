@@ -14,11 +14,12 @@ class CreateProjectTestimonial extends Migration
     public function up()
     {
         Schema::create('project_testimonial', function (Blueprint $table) {
-            $table->unsignedInteger('project_id')->nullable();
-            $table->unsignedInteger('testimonial_id');
+            $table->unsignedInteger('project_id');
+            $table->unsignedInteger('testimonial_id')->nullable();
             $table->foreign('project_id')->references('id')->on('projects');
             $table->foreign('testimonial_id')->references('id')->on('testimonials');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
