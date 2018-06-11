@@ -12,5 +12,6 @@
 */
 
 Route::get('/', function () {
+    $testimonials = App\Testimonial::all();
     return view('welcome');
 });

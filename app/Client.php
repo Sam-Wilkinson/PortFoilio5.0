@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Client extends Model
 {
@@ -26,6 +27,6 @@ class Client extends Model
 	 */
     public  function testimonials()
 	{
-		return  $this->hasMany('App\Testimonials','client_id','id');
+		return  $this->hasMany('App\Testimonial','client_id','id');
 	}      
 }
