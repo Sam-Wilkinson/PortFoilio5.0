@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration
             $table->string('name')->unique();
             $table->text('description');
             $table->string('image')->nullable();
-            $table->string('social')->unique();
+            $table->string('social')->unique()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

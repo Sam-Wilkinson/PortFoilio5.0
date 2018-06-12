@@ -55,7 +55,9 @@ class ProjectController extends Controller
         $project->URL = $request->URL;
         $project->date = $request->date;
         $project->client_id= $request->client;
-        $project->image = App::make('ImageResize')->imageStore($request->image);
+        if($request->image != null){
+            $project->image = App::make('ImageResize')->imageStore($request->image, 'ProjectImg');
+        }
         $project->save();
         foreach($request->technologies as $tech)
         {
@@ -108,6 +110,12 @@ class ProjectController extends Controller
         $project->URL = $request->URL;
         $project->date = $request->date;
         $project->client_id= $request->client;
+        if($request->image != null){
+            if(Storage::disk('imageFolder')->exists($project->image)){
+                $project->image = App::make('ImageResize')->imageDelete($request->image, 'ProjectImg');
+            }
+            $project->image = App::make('ImageResize')->imageStore($request->image,'ProjectImg');
+        }
         $project->save();
         $project->technologies()->detach();
         foreach($request->technologies as $tech)

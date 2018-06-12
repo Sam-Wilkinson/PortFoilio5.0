@@ -7,18 +7,19 @@
 @stop
 
 @section('content')
+    @include('partials.notification')
 <div>
      <a href="{{route('projects.create')}}" class="btn btn-success">Add a new Project</a>
 </div>
 <div class="d-flex justify-content-between flex-wrap">
 @foreach($projects as $project)
-    <div class="card col-3 m-2" style="width: 18rem;">
-            <img href="{{Storage::disk('ProjectImg-thumb')->url($project->image)}}" alt="Banner Post Image">
+    <div class="card col-3 m-2">
+            <img class="p-1" src="{{Storage::disk('ProjectImg-thumb')->url($project->image)}}" alt="Banner Post Image">
         <div class="card-body">
             <h5 class="card-title">{{$project->name}}</h5>
             <p class="card-text">{{$project->description}}</p>
             <h6>{{$project->date}}</h6>
-            <h6>{{$project->URL}}</h6>
+            <a href="{{$project->URL}}">{{$project->URL}}</a>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Client: {{$project->client->name}}</li>

@@ -7,8 +7,9 @@
 @stop
 
 @section('content')
+    @include('partials.notification')
 <div class="card mb-3">
-        <img href="{{Storage::disk('ProjectImg-banner')->url($project->image)}}" alt="Banner Post Image">
+        <img src="{{Storage::disk('ProjectImg-banner')->url($project->image)}}" alt="Banner Post Image">
         <div class="card-body">
           <h1 class="card-title text-center">{{$project->name}}</h5>
           <h2 class="card-text text-center">{{$project->description}}</h2>

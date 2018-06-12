@@ -72,6 +72,25 @@ return [
             'url' => env('APP_URL').'/storage/projectImg/banner',
             'visibility' => 'public',
         ],
+        'ClientImg' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/clientImg'),
+            'url' => env('APP_URL').'/storage/clientImg',
+            'visibility' => 'public',
+        ],
+        'ClientImg-thumb' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/clientImg/thumb'),
+            'url' => env('APP_URL').'/storage/clientImg/thumb',
+            'visibility' => 'public',
+        ],
+        'ClientImg-banner' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/clientImg/banner'),
+            'url' => env('APP_URL').'/storage/clientImg/banner',
+            'visibility' => 'public',
+        ],
+        
 
         's3' => [
             'driver' => 's3',

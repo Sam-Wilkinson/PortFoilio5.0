@@ -9,33 +9,36 @@ class ImageResize {
 /*
 * Saves and resizes an image
 * @param $image the image sent by the form
+* @param $folder the folder structure to store the images in
 * @return string image name
 */
 
-public function imageStore($image){
-    $image->store('', 'ProjectImg');
-    $image->store('', 'ProjectImg-thumb');
-    $imageName = $image->store('', 'ProjectImg-banner');
+public function imageStore($image, $folder){
+    $imageName = $image->store('', $folder);
+    $image->store('', $folder.'-thumb');
+    $image->store('', $folder.'-banner');
 
-    $thumb = Image::make(Storage::disk('ProjectImg-thumb')->path($imageName))->resize(300, null,function($constraint){
+    $thumb = Image::make(Storage::disk($folder.'-thumb')->path($imageName))->resize(300, null,function($constraint){
             $constraint->aspectRatio();
             $constraint->upsize();
     });
     $thumb->save();
-    $banner = Image::make(Storage::disk('ProjectImg-banner')->path($imageName))->resize(null, 1000 ,function($constraint){
+
+    $banner = Image::make(Storage::disk($folder.'-banner')->path($imageName))->resize(null, 600 ,function($constraint){
         $constraint->aspectRatio();
         $constraint->upsize();
-});
-$banner->save();
+    });
+    $banner->save();
 
     return $imageName;
 }
 /*
 * Deletes old images
-* @param $image
+* @param $image $folder
 */
-public function imageDelete($image){
-    Storage::disk('imageFolder')->delete($image);
-    Storage::disk('imageFolder-thumb')->delete($image);
+public function imageDelete($image, $folder){
+    Storage::disk($folder)->delete($image);
+    Storage::disk($folder.'-thumb')->delete($image);
+    Storage::disk($folder.'-banner')->delete($image);
 }
 }
