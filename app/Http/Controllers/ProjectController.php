@@ -117,6 +117,7 @@ class ProjectController extends Controller
             $project->image = App::make('ImageResize')->imageStore($request->image,'ProjectImg');
         }
         $project->save();
+        if($project->technologies != $request->technologies)
         $project->technologies()->detach();
         foreach($request->technologies as $tech)
         {

@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/admin/projects','ProjectController');
 Route::resource('/admin/clients','ClientController');
+Route::resource('admin/testimonials','TestimonialController');
+Route::resource('admin/technologies','TechnologyController');
 
 
 
